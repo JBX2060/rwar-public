@@ -50,12 +50,12 @@ struct rr_petal_data RR_PETAL_DATA[rr_petal_id_max] = {
     {rr_petal_id_fossil,    rr_rarity_id_common,    offensive, 10.0f,  60.0f,   0.0f, 100,  0, {1,1,1,1,1,1,1,1}},
     {rr_petal_id_stinger,   rr_rarity_id_common,    offensive, 50.0f,   3.0f,  10.0f, 150,  0, {1,1,1,1,1,3,5,5}},
     {rr_petal_id_light,     rr_rarity_id_rare,      offensive,  5.0f,   5.0f,  15.0f,  20,  0, {1,1,1,1,1,2,3,3}},
-    {rr_petal_id_shell,     rr_rarity_id_rare,      offensive, 30.0f,   8.0f,   0.0f,  75, 13, {1,1,1,1,1,2,3,3}},
+    {rr_petal_id_shell,     rr_rarity_id_rare,      offensive, 30.0f,   9.0f,   0.0f,  65, 13, {1,1,1,1,1,2,3,3}},
     {rr_petal_id_peas,      rr_rarity_id_rare,      offensive, 15.0f,   8.0f,   8.0f,  13, 12, {4,4,4,4,4,4,5,5}},
     {rr_petal_id_leaf,      rr_rarity_id_unusual,   offensive,  9.0f,  15.0f,   8.0f,  38,  0, {1,1,1,1,1,2,2,2}},
     {rr_petal_id_egg,       rr_rarity_id_unusual,   defensive,  1.0f,  20.0f,   0.0f,  25, 75, {1,1,2,2,2,2,2,2}},
     {rr_petal_id_magnet,    rr_rarity_id_rare,      defensive,  2.0f,  15.0f,   0.0f,  38,  0, {1,1,1,1,1,1,1,1}},
-    {rr_petal_id_uranium,   rr_rarity_id_legendary,      offensive, 4.0f,  10.0f,   0.0f,  50, 25, {1,1,1,1,1,1,1,1}},
+    {rr_petal_id_uranium,   rr_rarity_id_common,    defensive,  8.0f,  10.0f,   0.0f,  50, 25, {1,1,1,1,1,1,1,1}},
     {rr_petal_id_feather,   rr_rarity_id_common,    defensive,  1.0f,   3.0f,   0.0f,  25,  0, {1,1,1,1,1,1,1,1}},
     {rr_petal_id_azalea,    rr_rarity_id_common,    defensive,  5.0f,  10.0f,   0.0f,  50, 25, {1,1,1,1,1,1,1,1}},
     {rr_petal_id_bone,      rr_rarity_id_common,    defensive,  2.5f,  25.0f,   0.0f,  68,  0, {1,1,1,1,1,1,1,1}},
@@ -187,13 +187,13 @@ double RR_OCEAN_MOB_ID_RARITY_COEFFICIENTS[rr_mob_id_max] = {
     50, //tric
     100,//trex
     15, //fern
-    0.25,//tree
+    0.5,//tree
     75, //pter
     50, //dako
     25, //pachy
     40, //ornith
     25, //anky
-    0.5,//meteor
+    0.9,//meteor
     75, //quetz
     25  //edmo
 };
@@ -509,6 +509,7 @@ uint32_t level_from_xp(double xp)
 #define M 44
 #define x 48
 #define X 52
+#define a 54
 #else
 #define _ 0
 #define c 1
@@ -525,6 +526,7 @@ uint32_t level_from_xp(double xp)
 #define M 1
 #define x 1
 #define X 1
+#define a 1
 #endif
 
 #define RR_DEFINE_MAZE(name, size)                                             \
@@ -540,10 +542,10 @@ RR_DEFINE_MAZE(HELL_CREEK, 80) = {
 {m,m,_,_,_,_,_,U,U,U,_,_,_,_,_,X,X,X,_,_,x,_,_,_,x,_,x,x,_,_,x,_,_,_,X,X,X,_,_,_},
 {m,m,_,_,_,U,U,U,u,U,U,U,U,_,_,_,X,X,_,_,_,_,_,_,x,x,x,x,_,_,x,_,x,_,_,X,_,_,_,_},
 {m,_,_,_,U,U,U,u,u,u,_,_,r,_,_,_,_,X,X,_,_,_,_,_,x,_,x,x,x,_,x,_,x,M,_,_,_,_,_,_},
-{m,_,_,U,U,U,u,u,u,u,_,r,r,r,U,_,_,X,X,X,_,_,_,x,x,_,x,x,X,_,M,_,M,M,M,M,_,_,_,_},
-{m,_,r,U,U,_,u,u,u,_,_,r,_,_,U,_,X,X,X,X,X,X,_,_,x,_,_,X,X,_,M,_,_,M,M,M,M,_,_,_},
-{m,_,r,r,_,_,_,_,C,_,R,R,_,U,U,_,X,X,_,_,_,X,_,_,x,x,_,_,_,_,M,_,_,_,M,M,M,M,_,_},
-{m,_,_,_,_,_,_,_,C,_,_,_,_,u,_,_,X,X,_,X,X,X,_,_,x,x,x,_,_,M,M,_,_,_,_,_,_,M,_,_},
+{m,_,_,U,U,U,u,u,u,u,_,R,r,r,r,_,_,X,X,X,_,_,_,x,x,_,x,x,X,_,M,_,M,M,M,M,_,_,_,_},
+{m,_,r,U,U,_,u,u,u,_,_,R,_,_,r,_,X,X,X,X,X,X,_,_,x,_,_,X,X,_,M,_,_,M,M,M,M,_,_,_},
+{m,_,r,r,_,_,_,_,C,_,e,R,_,U,r,_,X,X,_,_,_,X,_,_,x,x,_,_,_,_,M,_,_,_,M,M,M,M,_,_},
+{m,_,_,_,_,_,_,_,C,_,_,_,_,u,_,_,X,X,_,a,X,X,_,_,x,x,x,_,_,M,M,_,_,_,_,_,_,M,_,_},
 {m,_,_,_,_,c,c,c,C,C,C,u,u,u,_,_,X,X,_,_,_,X,_,_,_,x,M,M,M,M,M,_,_,M,M,_,M,M,_,_},
 {m,_,_,_,_,c,c,c,_,_,u,u,u,_,_,_,X,X,_,_,_,X,_,_,_,x,x,_,_,_,M,M,M,M,M,M,M,_,_,_},
 {m,_,_,_,_,c,c,c,_,u,u,u,u,U,_,_,X,X,X,X,X,X,_,_,_,_,_,_,_,_,_,M,M,M,M,M,M,_,_,_},
@@ -551,11 +553,11 @@ RR_DEFINE_MAZE(HELL_CREEK, 80) = {
 {m,m,m,m,m,m,_,C,_,_,u,U,U,U,_,r,r,_,_,_,_,_,e,e,e,_,_,_,M,M,M,M,_,M,_,_,m,m,_,_},
 {L,_,_,_,_,m,_,C,u,_,_,_,_,U,r,r,r,r,R,R,R,R,R,_,e,e,e,_,M,M,M,M,M,M,m,_,m,m,m,_},
 {L,L,_,m,m,m,_,_,u,u,u,U,_,_,_,_,_,_,R,R,_,_,e,_,_,_,E,_,_,M,M,M,_,_,m,m,m,m,m,_},
-{_,L,_,_,L,m,_,u,u,_,_,U,U,U,r,_,R,R,R,R,_,_,e,e,_,_,E,_,_,_,M,M,M,_,_,m,m,m,m,_},
-{_,L,L,L,L,_,_,U,u,_,_,U,U,r,r,r,r,R,R,R,_,_,_,e,e,e,E,E,_,_,_,_,_,_,_,_,_,_,m,_},
-{L,L,_,_,_,_,_,U,U,U,_,U,r,_,r,r,_,_,R,R,R,_,_,_,_,_,E,E,E,E,E,_,_,_,_,l,_,_,m,_},
-{L,_,_,_,_,_,_,_,U,U,_,r,_,_,r,R,R,_,_,R,e,e,e,_,_,_,E,E,_,E,E,E,_,_,l,l,l,_,m,_},
-{L,_,_,_,L,L,L,_,_,U,_,r,_,_,R,R,R,_,_,e,_,e,e,e,_,_,E,_,_,_,_,E,_,l,l,l,l,_,m,_},
+{_,L,_,_,L,m,_,U,U,_,_,U,U,U,r,_,R,R,R,R,_,_,e,e,_,_,E,_,_,_,M,M,M,_,_,m,m,m,m,_},
+{_,L,L,L,L,_,_,U,r,_,_,U,U,r,r,r,r,R,R,R,_,_,_,e,e,e,E,E,_,_,_,_,_,_,_,_,_,_,m,_},
+{L,L,_,_,_,_,_,r,r,R,_,U,r,_,r,r,_,_,R,R,R,_,_,_,_,_,E,E,E,E,E,_,_,_,_,l,_,_,m,_},
+{L,_,_,_,_,_,_,_,R,R,_,r,_,_,r,R,R,_,_,R,e,e,e,_,_,_,E,E,_,E,E,E,_,_,l,l,l,_,m,_},
+{L,_,_,_,L,L,L,_,_,e,_,r,_,_,R,R,R,_,_,e,_,e,e,e,_,_,E,_,_,_,_,E,_,l,l,l,l,_,m,_},
 {L,_,_,L,L,L,L,L,_,_,_,r,_,_,_,R,R,_,e,e,_,e,e,e,_,E,E,_,l,_,_,l,l,l,l,l,_,_,m,_},
 {L,_,L,L,L,L,L,L,_,_,_,r,_,_,_,R,R,_,e,e,_,e,e,_,_,E,_,_,l,l,_,l,_,_,_,_,_,_,m,_},
 {L,L,L,L,L,L,L,L,_,_,_,R,R,R,_,_,e,_,e,e,_,_,E,_,_,E,_,_,l,l,_,l,l,_,_,_,_,m,m,_},
@@ -566,11 +568,11 @@ RR_DEFINE_MAZE(HELL_CREEK, 80) = {
 {L,L,_,_,l,l,_,_,_,_,_,e,e,e,_,_,e,E,E,E,_,_,E,E,_,_,l,l,l,l,_,_,_,_,_,_,_,L,_,_},
 {L,L,_,_,l,l,l,l,_,_,_,_,_,_,_,_,E,E,E,E,E,E,E,E,_,_,l,l,l,l,_,_,m,L,L,L,L,L,_,_},
 {_,L,L,_,_,l,l,l,l,l,l,_,_,_,_,_,E,E,E,E,_,_,E,E,_,_,l,l,l,_,_,_,m,_,_,_,_,L,_,_},
-{_,L,L,_,_,_,_,l,l,l,E,E,E,E,E,E,E,E,E,E,E,_,E,l,_,_,l,l,_,_,_,_,m,_,m,m,_,L,_,_},
-{_,L,L,m,m,_,_,_,_,l,l,E,E,E,_,_,_,_,_,_,E,E,l,l,l,_,l,l,l,_,_,_,m,_,_,m,_,L,_,_},
-{_,L,m,m,m,m,m,_,_,_,_,_,_,_,_,_,_,_,_,_,E,l,l,l,l,l,l,l,l,_,_,_,m,m,m,m,_,L,_,_},
-{_,_,m,m,m,m,m,m,_,_,_,_,_,_,_,_,M,M,_,_,_,l,l,l,_,l,l,l,l,_,_,_,_,_,_,_,_,L,_,_},
-{_,_,_,m,m,m,m,m,m,m,m,m,m,m,m,m,M,M,_,_,_,_,_,_,_,l,l,l,l,l,l,L,L,L,L,L,L,L,_,_},
+{_,L,L,_,_,_,_,l,l,l,E,E,E,E,E,E,E,E,E,E,E,_,E,l,_,_,l,l,_,_,_,_,m,_,M,M,_,L,_,_},
+{_,L,L,m,m,_,_,_,_,l,l,E,E,E,_,_,_,_,_,_,E,E,l,l,l,_,l,l,l,_,_,_,m,_,_,M,_,L,_,_},
+{_,L,m,m,m,m,m,_,_,_,_,_,_,_,_,_,_,_,_,_,E,l,l,l,l,l,l,l,l,_,_,_,m,m,M,M,_,L,_,_},
+{_,_,m,m,m,m,m,M,_,_,_,_,_,_,_,_,X,X,_,_,_,l,l,l,_,l,l,l,l,_,_,_,_,_,_,_,_,L,_,_},
+{_,_,_,m,m,m,M,M,M,M,M,M,M,M,x,x,x,X,_,_,_,_,_,_,_,l,l,l,l,l,l,L,L,L,L,L,L,m,_,_},
 {_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_}
 };
 RR_DEFINE_MAZE(OCEAN, 80) = {
@@ -644,3 +646,4 @@ uint8_t RR_GLOBAL_BIOME = rr_biome_id_hell_creek | rr_biome_id_ocean;
 #undef m
 #undef M
 #undef x
+#undef X
