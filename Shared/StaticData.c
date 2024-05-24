@@ -828,5 +828,6 @@ struct rr_maze_declaration RR_MAZES[rr_biome_id_max] = {
 #undef m
 #undef M
 #undef x
+#undef X
 #undef s
-#undef S
+
