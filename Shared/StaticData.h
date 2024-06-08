@@ -108,6 +108,8 @@ enum rr_petal_id
     rr_petal_id_wax,
     rr_petal_id_sand,
     rr_petal_id_mint,
+    rr_peatl_id_missile,
+    rr_peatl_id_stick,
     rr_petal_id_cactus,
     rr_petal_id_gold,
     rr_petal_id_rice,
